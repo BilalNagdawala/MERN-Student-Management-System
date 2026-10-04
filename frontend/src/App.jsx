@@ -5,7 +5,7 @@ function App() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/students")
+   fetch("https://mern-student-management-system-1e3q.onrender.com/api/students")
       .then((response) => response.json())
       .then((data) => setStudents(data))
       .catch((error) => console.error("Error:", error));
