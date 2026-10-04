@@ -1,0 +1,614 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Manrope", sans-serif;
+  color: #17221e;
+  background: #e9ece8;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #e9ece8;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  padding: 28px 6vw 24px;
+  overflow: hidden;
+}
+
+/* subtle background */
+
+.app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(23, 34, 30, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 34, 30, 0.025) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* header */
+
+.header {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1250px;
+  margin: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 24px;
+
+  border-bottom: 1px solid #cdd4d0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
+.brand-box {
+  width: 32px;
+  height: 32px;
+
+  display: grid;
+  place-items: center;
+
+  background: #183f34;
+  color: #f5f6f3;
+
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+
+  border-radius: 8px;
+}
+
+.live {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+
+  color: #466158;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #27946a;
+  box-shadow: 0 0 0 4px rgba(39, 148, 106, 0.12);
+}
+
+/* main */
+
+main {
+  position: relative;
+  z-index: 2;
+  max-width: 1250px;
+  margin: auto;
+}
+
+/* hero */
+
+.hero {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+
+  padding: 75px 0 70px;
+}
+
+.hero-number {
+  padding-top: 13px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+
+  color: #87938e;
+}
+
+.label {
+  margin: 0 0 15px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+
+  color: #708079;
+}
+
+.hero h1 {
+  margin: 0;
+
+  font-size: clamp(58px, 8vw, 112px);
+  line-height: 0.88;
+  letter-spacing: -6px;
+  font-weight: 800;
+}
+
+.hero h1 span {
+  color: #477c6c;
+}
+
+.description {
+  max-width: 430px;
+  margin: 30px 0 0;
+
+  color: #65736e;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* overview */
+
+.overview {
+  border-top: 1px solid #cdd4d0;
+  padding-top: 20px;
+  margin-bottom: 60px;
+}
+
+.overview-title {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+
+  color: #7b8984;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 12px;
+}
+
+.stat {
+  min-height: 190px;
+
+  padding: 22px;
+
+  background: rgba(247, 249, 247, 0.72);
+  border: 1px solid #d3dbd7;
+
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.stat.primary {
+  background: #183f34;
+  color: white;
+  border-color: #183f34;
+}
+
+.stat-label {
+  display: flex;
+  justify-content: space-between;
+
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1.3px;
+}
+
+.stat-label span {
+  opacity: 0.45;
+}
+
+.stat-value {
+  margin-top: auto;
+
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.database-name {
+  margin-top: auto;
+
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.database-name span {
+  color: #477c6c;
+}
+
+.api-status {
+  margin-top: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.api-status span {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+  background: #29996c;
+}
+
+.stat-footer {
+  margin-top: 14px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+
+  color: #82908b;
+}
+
+.stat.primary .stat-footer {
+  color: #a9bdb5;
+}
+
+/* directory */
+
+.directory {
+  background: rgba(249, 250, 248, 0.9);
+
+  border: 1px solid #cfd8d3;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+}
+
+.directory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  padding: 30px 30px 25px;
+
+  border-bottom: 1px solid #dce2df;
+}
+
+.directory-header .label {
+  margin-bottom: 7px;
+}
+
+.directory-header h2 {
+  margin: 0;
+
+  font-size: 30px;
+  letter-spacing: -1px;
+}
+
+.directory-count {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  color: #73817c;
+}
+
+/* student row */
+
+.student-row {
+  min-height: 110px;
+
+  display: grid;
+
+  grid-template-columns:
+    55px
+    48px
+    1.2fr
+    1.3fr
+    150px
+    30px;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 15px 30px;
+
+  border-bottom: 1px solid #e2e7e4;
+
+  transition:
+    background 0.2s ease,
+    padding 0.2s ease;
+}
+
+.student-row:last-child {
+  border-bottom: none;
+}
+
+.student-row:hover {
+  background: #f0f5f2;
+  padding-left: 36px;
+}
+
+.row-number {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  color: #9aa59f;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: #dce9e4;
+  color: #275e50;
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.student-info h3 {
+  margin: 0;
+
+  font-size: 15px;
+}
+
+.student-info p {
+  margin: 4px 0 0;
+
+  font-size: 12px;
+  color: #89958f;
+}
+
+.course-info span,
+.student-id span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+
+  color: #98a29e;
+}
+
+.course-info strong {
+  font-size: 12px;
+  font-weight: 600;
+  color: #465650;
+}
+
+.student-id {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+
+  color: #697873;
+}
+
+.arrow {
+  width: 28px;
+  height: 28px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #d2dad6;
+  border-radius: 50%;
+
+  color: #63736d;
+
+  transition: 0.2s;
+}
+
+.student-row:hover .arrow {
+  background: #183f34;
+  border-color: #183f34;
+  color: white;
+  transform: translate(2px, -2px);
+}
+
+.empty {
+  padding: 60px;
+  text-align: center;
+  color: #7d8984;
+}
+
+/* footer */
+
+footer {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1250px;
+
+  margin: 20px auto 0;
+
+  padding-top: 18px;
+
+  display: flex;
+  justify-content: space-between;
+
+  border-top: 1px solid #cdd4d0;
+
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.7px;
+
+  color: #7d8984;
+}
+
+/* responsive */
+
+@media (max-width: 900px) {
+
+  .app {
+    padding: 22px 20px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 55px 0;
+  }
+
+  .hero-number {
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: 65px;
+    letter-spacing: -4px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .student-row {
+    grid-template-columns: 40px 45px 1fr 30px;
+  }
+
+  .course-info,
+  .student-id {
+    display: none;
+  }
+
+  footer {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 550px) {
+
+  .hero h1 {
+    font-size: 52px;
+  }
+
+  .header {
+    padding-bottom: 18px;
+  }
+
+  .live {
+    display: none;
+  }
+
+  .directory-header {
+    padding: 22px;
+  }
+
+  .student-row {
+    padding: 15px 20px;
+  }
+
+  .student-row:hover {
+    padding-left: 20px;
+  }
+}
+
+/* ============================= */
+/* TEXT VISIBILITY FIX */
+/* ============================= */
+
+.hero h1 {
+  color: #17221e !important;
+}
+
+.hero h1 span {
+  color: #477c6c !important;
+}
+
+.hero .description {
+  color: #65736e !important;
+}
+
+.directory-header h2 {
+  color: #17221e !important;
+}
+
+.directory-header .label {
+  color: #60716a !important;
+}
+
+.directory-count {
+  color: #60716a !important;
+}
+
+.student-info h3 {
+  color: #17221e !important;
+}
+
+.student-info p {
+  color: #65736e !important;
+}
+
+.course-info strong {
+  color: #40534c !important;
+}
+
+.course-info span,
+.student-id span {
+  color: #71817a !important;
+}
+
+.student-id {
+  color: #53655e !important;
+}
+
+.row-number {
+  color: #71817a !important;
+}
+
+.overview-title {
+  color: #60716a !important;
+}
+
+.stat-label {
+  color: #52635c !important;
+}
+
+.stat:not(.primary) .stat-footer {
+  color: #71817a !important;
+}
+
+footer {
+  color: #687871 !important;
+}
